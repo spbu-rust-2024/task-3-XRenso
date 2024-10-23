@@ -24,7 +24,7 @@ pub fn count() -> i8 {
     let mut y0 = y;
     let mut z0: f64 = 0.0;
     // let mut z = z0;
-    for i in 0..deep {
+    for _ in 0..deep {
         x = (x0 + y0) / 2.0;
         y = z0 + f64::powf((x0 - z0) * (y0 - z0), 1.0 / 2.0);
         z0 = z0 - f64::powf((x0 - z0) * (y0 - z0), 1.0 / 2.0);

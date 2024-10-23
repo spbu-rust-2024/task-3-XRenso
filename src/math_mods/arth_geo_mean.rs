@@ -23,7 +23,7 @@ pub fn count() -> i8 {
     let mut a0 = a;
     let mut b0 = b;
 
-    for i in 0..deep {
+    for _ in 0..deep {
         a = (a0 + b0) / 2.0;
         b = f64::powf(a0 * b0, 1.0 / 2.0);
         a0 = a;
