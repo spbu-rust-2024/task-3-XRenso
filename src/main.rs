@@ -36,12 +36,17 @@ fn main() {
         "Среднее геометрическое",
         "Среднее степенное",
         "Среднее арефметико-геометрическое",
+        "Модифицированное арифметико-геометрическое среднее",
     ];
     let mut action: HashMap<&str, &str> = HashMap::new();
     action.insert("Среднее арифметическое", "arth_mean");
     action.insert("Среднее геометрическое", "geo_mean");
     action.insert("Среднее степенное", "deg_mean");
     action.insert("Среднее арефметико-геометрическое", "arth_geo_mean");
+    action.insert(
+        "Модифицированное арифметико-геометрическое среднее",
+        "modif_arth_geo_mean",
+    );
 
     println!("{}", PROG_NAME);
 
