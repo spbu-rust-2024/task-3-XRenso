@@ -14,6 +14,8 @@ pub fn get_command(func_code: &str) -> i8 {
         res = math_mods::geometry_mean();
     } else if func_code == "deg_mean" {
         res = math_mods::degree_mean();
+    } else if func_code == "arth_geo_mean" {
+        res = math_mods::arth_geo_mean();
     } else {
         res = unknown_cmd();
     }
