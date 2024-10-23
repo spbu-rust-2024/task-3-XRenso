@@ -18,6 +18,8 @@ pub fn get_command(func_code: &str) -> i8 {
         res = math_mods::arth_geo_mean();
     } else if func_code == "modif_arth_geo_mean" {
         res = math_mods::modif_arth_geo_mean();
+    } else if func_code == "kolmogor_mean" {
+        res = math_mods::kolmogor_mean();
     } else {
         res = unknown_cmd();
     }
