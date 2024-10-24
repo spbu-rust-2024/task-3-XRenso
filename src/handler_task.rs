@@ -7,24 +7,18 @@ fn unknown_cmd() -> i8 {
 }
 
 pub fn get_command(func_code: &str) -> i8 {
-    let mut res: i8;
-    if func_code == "arth_mean" {
-        res = math_mods::arithmetic_mean();
-    } else if func_code == "geo_mean" {
-        res = math_mods::geometry_mean();
-    } else if func_code == "deg_mean" {
-        res = math_mods::degree_mean();
-    } else if func_code == "arth_geo_mean" {
-        res = math_mods::arth_geo_mean();
-    } else if func_code == "modif_arth_geo_mean" {
-        res = math_mods::modif_arth_geo_mean();
-    } else if func_code == "kolmogor_mean" {
-        res = math_mods::kolmogor_mean();
-    } else if func_code == "trim_mean" {
-        res = math_mods::trim_mean();
-    } else {
-        res = unknown_cmd();
-    }
+    let mut res = match func_code {
+        "arth_mean" => math_mods::arithmetic_mean(),
+        "geo_mean" => math_mods::geometry_mean(),
+        "deg_mean" => math_mods::degree_mean(),
+        "arth_geo_mean" => math_mods::arth_geo_mean(),
+        "modif_arth_geo_mean" => math_mods::modif_arth_geo_mean(),
+        "kolmogor_mean" => math_mods::kolmogor_mean(),
+        "trim_mean" => math_mods::trim_mean(),
+        "vinzor_mean" => math_mods::vinzor_mean(),
+        _ => unknown_cmd(),
+    };
+
     if res == 0 {
         small_logic::clear_terminal();
         res = get_command(func_code);
