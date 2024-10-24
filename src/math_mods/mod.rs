@@ -5,6 +5,7 @@ mod geometry_mean;
 mod kolmogor_mean;
 mod modif_arth_geo_mean;
 mod trim_mean;
+mod vinzor_mean;
 mod what_do_next;
 
 pub use arithmetic_mean::count as arithmetic_mean;
@@ -14,4 +15,5 @@ pub use geometry_mean::count as geometry_mean;
 pub use kolmogor_mean::count as kolmogor_mean;
 pub use modif_arth_geo_mean::count as modif_arth_geo_mean;
 pub use trim_mean::count as trim_mean;
+pub use vinzor_mean::count as vinzor_mean;
 pub use what_do_next::what_do as exit_code_algos;
