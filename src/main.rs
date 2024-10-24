@@ -16,7 +16,9 @@ fn main() {
         "Среднее по Колмогорову",
         "Среднее усеченное",
         "Винсоризованное среднее",
+        "Медиана",
     ];
+
     let mut action: HashMap<&str, &str> = HashMap::new();
     action.insert("Среднее арифметическое", "arth_mean");
     action.insert("Среднее геометрическое", "geo_mean");
@@ -29,6 +31,7 @@ fn main() {
     action.insert("Среднее по Колмогорову", "kolmogor_mean");
     action.insert("Среднее усеченное", "trim_mean");
     action.insert("Винсоризованное среднее", "vinzor_mean");
+    action.insert("Медиана", "median");
 
     println!("{}", constants::PROG_NAME);
 

@@ -16,6 +16,7 @@ pub fn get_command(func_code: &str) -> i8 {
         "kolmogor_mean" => math_mods::kolmogor_mean(),
         "trim_mean" => math_mods::trim_mean(),
         "vinzor_mean" => math_mods::vinzor_mean(),
+        "median" => math_mods::meidan(),
         _ => unknown_cmd(),
     };
 
