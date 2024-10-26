@@ -19,6 +19,7 @@ pub fn get_command(func_code: &str) -> i8 {
         "median" => math_mods::median(),
         "moda" => math_mods::moda(),
         "mean_deviation" => math_mods::deaviation_mean(),
+        "mean_square_dev" => math_mods::mean_square_dev(),
         _ => unknown_cmd(),
     };
 
