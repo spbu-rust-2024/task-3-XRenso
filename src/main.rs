@@ -4,8 +4,23 @@ mod constants;
 mod handler_task;
 mod math_mods;
 mod small_logic;
+use clap::Parser;
+
+#[derive(Parser)]
+#[command(version, about, long_about = None)]
+#[command(next_line_help = true)]
+struct Cli {
+    #[arg(short, long)]
+    func: Option<String>,
+    #[arg(short = 'd', long)]
+    depth: Option<f64>,
+    number_array: Vec<String>,
+    // #[arg(long)]
+    // depth: String,
+}
 
 fn main() {
+    let cli = Cli::parse();
     small_logic::clear_terminal();
     let items = vec![
         "Среднее арифметическое",
@@ -50,16 +65,30 @@ fn main() {
 
     println!("{}", constants::PROG_NAME);
 
-    let selection = Select::new()
-        .with_prompt("Что будем делать?")
-        .default(0)
-        .items(&items)
-        .interact()
-        .unwrap();
+    if cli.func.is_none() {
+        let selection = Select::new()
+            .with_prompt("Что будем делать?")
+            .default(0)
+            .items(&items)
+            .interact()
+            .unwrap();
 
-    let func_code = action.get(&items[selection]).unwrap();
-    let res = handler_task::get_command(func_code);
-    if res == 1 {
-        main();
+        let func_code = action.get(&items[selection]).unwrap();
+        let res = handler_task::get_command(func_code, vec![], None);
+        if res == 1 {
+            main();
+        }
+    } else {
+        let func_code = cli.func.unwrap();
+        let mut num_arr: Vec<i128> = Vec::new();
+        if !cli.number_array.is_empty() {
+            for i in cli.number_array.iter() {
+                num_arr.push(i.trim().parse::<i128>().expect("Не число"));
+            }
+        }
+        let res = handler_task::get_command(&func_code, num_arr, cli.depth);
+        if res == 1 {
+            main();
+        }
     }
 }

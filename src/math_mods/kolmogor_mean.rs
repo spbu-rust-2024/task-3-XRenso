@@ -27,8 +27,13 @@ fn f_reverse(target_value: f64, x0_init: f64, tolerance: f64, max_iter: u16) -> 
     x_new
 }
 
-pub fn count() -> i8 {
-    let result = small_logic::get_user_i128_input();
+pub fn count(num_array: Vec<i128>) -> i8 {
+    let result: Vec<i128>;
+    if num_array.is_empty() {
+        result = small_logic::get_user_i128_input();
+    } else {
+        result = num_array;
+    }
     let mut x: f64 = 0.0;
     for i in result.iter() {
         x += f(*i as f64);

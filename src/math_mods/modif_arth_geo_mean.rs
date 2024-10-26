@@ -1,20 +1,30 @@
 use crate::{math_mods, small_logic};
 use std::io;
-pub fn count() -> i8 {
-    let mut user_input = String::new();
-    println!("Введите глубину расчета: ");
-    io::stdin()
-        .read_line(&mut user_input)
-        .expect("Не удалось прочитать");
-    let deep: i128 = user_input
-        .trim()
-        .parse()
-        .expect("Неверный тип входных данных");
+pub fn count(num_array: Vec<i128>, depth: Option<f64>) -> i8 {
+    let deep: i128;
+    let result: Vec<i128>;
+    if depth == None {
+        let mut user_input = String::new();
+        println!("Введите глубину расчета: ");
+        io::stdin()
+            .read_line(&mut user_input)
+            .expect("Не удалось прочитать");
+        deep = user_input
+            .trim()
+            .parse()
+            .expect("Неверный тип входных данных");
 
-    if deep < 1 {
-        panic!("Невалидные входные данные: Глубина расчетов меньше 1");
+        if deep < 1 {
+            panic!("Невалидные входные данные: Глубина расчетов меньше 1");
+        }
+    } else {
+        deep = depth.unwrap() as i128;
     }
-    let result = small_logic::get_user_i128_input();
+    if num_array.is_empty() {
+        result = small_logic::get_user_i128_input();
+    } else {
+        result = num_array;
+    }
     if result.len() != 2 {
         panic!("Невалидные входные данные: должно быть 2 числа");
     }

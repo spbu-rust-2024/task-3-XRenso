@@ -1,7 +1,12 @@
 use crate::{math_mods, small_logic};
 
-pub fn count() -> i8 {
-    let mut result = small_logic::get_user_i128_input();
+pub fn count(num_array: Vec<i128>) -> i8 {
+    let mut result: Vec<i128>;
+    if num_array.is_empty() {
+        result = small_logic::get_user_i128_input();
+    } else {
+        result = num_array;
+    }
     result.sort_by(|a, b| a.partial_cmp(b).unwrap_or(std::cmp::Ordering::Equal));
     let answer: f64;
     if result.len() % 2 == 0 {

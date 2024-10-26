@@ -18,8 +18,13 @@ fn get_max_values(val_counts: HashMap<i128, i128>) -> Vec<i128> {
     maxed
 }
 
-pub fn count() -> i8 {
-    let result = small_logic::get_user_i128_input();
+pub fn count(num_array: Vec<i128>) -> i8 {
+    let result: Vec<i128>;
+    if num_array.is_empty() {
+        result = small_logic::get_user_i128_input();
+    } else {
+        result = num_array;
+    }
     let mut counter_elements: HashMap<i128, i128> = HashMap::new();
     for i in result.iter() {
         if counter_elements.contains_key(i) {
