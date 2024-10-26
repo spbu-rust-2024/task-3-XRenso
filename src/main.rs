@@ -20,6 +20,9 @@ fn main() {
         "Мода",
         "Среднее линейное отклонение",
         "Cреднее квадратическое отклонение",
+        "Линейный коэффициент вариации",
+        "Квадратический коэффициент вариации",
+        "Дисперсия",
     ];
 
     let mut action: HashMap<&str, &str> = HashMap::new();
@@ -38,6 +41,12 @@ fn main() {
     action.insert("Мода", "moda");
     action.insert("Среднее линейное отклонение", "mean_deviation");
     action.insert("Cреднее квадратическое отклонение", "mean_square_dev");
+    action.insert("Линейный коэффициент вариации", "linear_coeff_deviation");
+    action.insert(
+        "Квадратический коэффициент вариации",
+        "square_coeff_deviation",
+    );
+    action.insert("Дисперсия", "dispersion");
 
     println!("{}", constants::PROG_NAME);
 

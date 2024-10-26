@@ -20,6 +20,9 @@ pub fn get_command(func_code: &str) -> i8 {
         "moda" => math_mods::moda(),
         "mean_deviation" => math_mods::deaviation_mean(),
         "mean_square_dev" => math_mods::mean_square_dev(),
+        "linear_coeff_deviation" => math_mods::linear_coeff_deviation(),
+        "square_coeff_deviation" => math_mods::square_coeff_deviation(),
+        "dispersion" => math_mods::dispersion(),
         _ => unknown_cmd(),
     };
 
