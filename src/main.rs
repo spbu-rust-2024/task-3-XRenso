@@ -4,19 +4,37 @@ mod constants;
 mod handler_task;
 mod math_mods;
 mod small_logic;
-use clap::Parser;
+use clap::{Parser, ValueEnum};
 
 #[derive(Parser)]
 #[command(version, about, long_about = None)]
 #[command(next_line_help = true)]
 struct Cli {
-    #[arg(short, long)]
-    func: Option<String>,
+    #[arg(short, long, value_enum)]
+    func: Option<Func>,
     #[arg(short = 'd', long)]
     depth: Option<f64>,
     number_array: Vec<String>,
     // #[arg(long)]
     // depth: String,
+}
+#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, ValueEnum)]
+enum Func {
+    ArthMean,
+    GeoMean,
+    DegMean,
+    ArthGeoMean,
+    ModifArthGeoMean,
+    KolmogorMean,
+    TrimMean,
+    VinzorMean,
+    Median,
+    Moda,
+    MeanDeviation,
+    MeanSquareDev,
+    LinearCoeffDeviation,
+    SquareCoeffDeviation,
+    Dispersion,
 }
 
 fn main() {
@@ -79,7 +97,23 @@ fn main() {
             main();
         }
     } else {
-        let func_code = cli.func.unwrap();
+        let func_code = match cli.func.unwrap() {
+            Func::ArthGeoMean => "arth_geo_mean",
+            Func::ArthMean => "arth_mean",
+            Func::DegMean => "deg_mean",
+            Func::Dispersion => "dispersion",
+            Func::KolmogorMean => "kolmogor_mean",
+            Func::LinearCoeffDeviation => "linear_coeff_deviation",
+            Func::MeanDeviation => "mean_deviation",
+            Func::MeanSquareDev => "mean_square_dev",
+            Func::Median => "median",
+            Func::Moda => "moda",
+            Func::ModifArthGeoMean => "modif_arth_geo_mean",
+            Func::SquareCoeffDeviation => "square_coeff_deviation",
+            Func::TrimMean => "trim_mean",
+            Func::VinzorMean => "vinzor_mean",
+            _ => "none",
+        };
         let mut num_arr: Vec<i128> = Vec::new();
         if !cli.number_array.is_empty() {
             for i in cli.number_array.iter() {
