@@ -1,5 +1,6 @@
 mod arithmetic_mean;
 mod arth_geo_mean;
+mod deaviation_mean;
 mod degree_mean;
 mod geometry_mean;
 mod kolmogor_mean;
@@ -12,6 +13,7 @@ mod what_do_next;
 
 pub use arithmetic_mean::count as arithmetic_mean;
 pub use arth_geo_mean::count as arth_geo_mean;
+pub use deaviation_mean::count as deaviation_mean;
 pub use degree_mean::count as degree_mean;
 pub use geometry_mean::count as geometry_mean;
 pub use kolmogor_mean::count as kolmogor_mean;

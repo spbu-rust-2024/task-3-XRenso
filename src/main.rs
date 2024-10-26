@@ -18,6 +18,7 @@ fn main() {
         "Винсоризованное среднее",
         "Медиана",
         "Мода",
+        "Среднее линейное отклонение",
     ];
 
     let mut action: HashMap<&str, &str> = HashMap::new();
@@ -34,6 +35,7 @@ fn main() {
     action.insert("Винсоризованное среднее", "vinzor_mean");
     action.insert("Медиана", "median");
     action.insert("Мода", "moda");
+    action.insert("Среднее линейное отклонение", "mean_deviation");
 
     println!("{}", constants::PROG_NAME);
 

@@ -18,6 +18,7 @@ pub fn get_command(func_code: &str) -> i8 {
         "vinzor_mean" => math_mods::vinzor_mean(),
         "median" => math_mods::median(),
         "moda" => math_mods::moda(),
+        "mean_deviation" => math_mods::deaviation_mean(),
         _ => unknown_cmd(),
     };
 
