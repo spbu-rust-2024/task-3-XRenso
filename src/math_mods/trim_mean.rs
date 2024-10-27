@@ -1,6 +1,28 @@
 use crate::{math_mods, small_logic};
 use std::io;
 
+/// Функция для расчета среднего усеченного
+/// # Входные данные
+/// * `num_array` - вектор из целочисленных типа `i128`,
+/// которые мы получаем при передаче, если мы запускаем при помощи флагов
+/// * `depth` - число с плавающей точкой типа `Option<f64>`, которое
+/// испсользуется для процента усечения
+/// # Принцип работы
+/// Сортируем вектор чисел и удаляем согласно проценту все лишние числа
+/// ```
+/// result.sort_by(|a, b| a.partial_cmp(b).unwrap_or(std::cmp::Ordering::Equal));
+/// let mut result_f64: Vec<f64> = Vec::new();
+/// for i in 0..result.len() {
+///     result_f64.push(result[i] as f64);
+/// }
+/// let trim_count = (result_f64.len() as f64 * trim_percent).round() as usize;
+/// let trim_result = &result_f64[trim_count..result_f64.len() - trim_count];
+/// ```
+/// Ответом будет среднее арефметическое этого вектора
+/// ```
+/// let answer: f64 = trim_result.iter().sum::<f64>() / trim_result.len() as f64;
+/// ```
+
 pub fn count(num_array: Vec<i128>, depth: Option<f64>) -> i8 {
     let trim_percent: f64;
     let mut result: Vec<i128>;

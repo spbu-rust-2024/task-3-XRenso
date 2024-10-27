@@ -7,33 +7,52 @@ mod small_logic;
 use clap::{Parser, ValueEnum};
 
 #[derive(Parser)]
-#[command(version, about, long_about = None)]
+#[command(about, long_about = None)]
 #[command(next_line_help = true)]
 struct Cli {
+    /// Отвечает за мат. функцию, которая будет вызвана. Без него не будут учитываться другие флаги
+
     #[arg(short, long, value_enum)]
     func: Option<Func>,
+
+    /// Параметр который нужен в некоторый функциях как АГС, которым требуется дополнительный 3 параметр
     #[arg(short = 'd', long)]
     depth: Option<f64>,
+
+    /// Набор чисел, что пойдут на вход программе
     number_array: Vec<String>,
-    // #[arg(long)]
-    // depth: String,
 }
 #[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, ValueEnum)]
 enum Func {
+    /// Среднее арифметичекое
     ArthMean,
+    /// Среднее геометрическое
     GeoMean,
+    /// Среднее степенное
     DegMean,
+    /// Арифметико-геометрическое среднее
     ArthGeoMean,
+    /// Модифицированное арифметико-геометрическое среднее
     ModifArthGeoMean,
+    /// Среднее Колмогорова
     KolmogorMean,
+    /// Среднее усеченное
     TrimMean,
+    /// Винсоризованное среднее
     VinzorMean,
+    /// Медиана
     Median,
+    /// Мода
     Moda,
+    /// Среднее линейное отклонение
     MeanDeviation,
+    /// Cреднее квадратическое отклонение
     MeanSquareDev,
+    /// Линейный коэффициент вариации
     LinearCoeffDeviation,
+    /// Квадратический коэффициент вариации
     SquareCoeffDeviation,
+    /// Дисперсия
     Dispersion,
 }
 

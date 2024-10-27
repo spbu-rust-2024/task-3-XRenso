@@ -1,5 +1,29 @@
 use crate::{math_mods, small_logic};
 
+/// Функция для расчета медианы
+/// # Входные данные
+/// * `num_array` - вектор из целочисленных типа `i128`,
+/// которые мы получаем при передаче, если мы запускаем при помощи флагов
+///
+/// # Принцип работы
+/// Мы сортируем вектор
+/// ```
+/// result.sort_by(|a, b| a.partial_cmp(b).unwrap_or(std::cmp::Ordering::Equal));
+/// ```
+/// Если наш вектор четный, то медианой будет являеться среднее двух чисел в центре вектора
+/// ```
+/// if result.len() % 2 == 0 {
+///     answer = (result[result.len() / 2 - 1] as f64 + result[result.len() / 2] as f64) / 2.0;
+/// }
+/// ```
+/// Иначе же это просто число в середине вектора
+/// ```
+/// else {
+///     let idx = result.len() as f64 / 2.0;
+///     answer = result[idx.round() as usize - 1] as f64;
+/// }
+/// ```
+
 pub fn count(num_array: Vec<i128>) -> i8 {
     let mut result: Vec<i128>;
     if num_array.is_empty() {
