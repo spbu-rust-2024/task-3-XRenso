@@ -48,7 +48,7 @@ fn get_max_values(val_counts: HashMap<i128, i128>) -> Vec<i128> {
 /// Мы создаем `HashMap<i128,i128>`, в которую записываем число и сколько раз оно встречается и передаем отстортированный вид в `get_max_values`
 /// ```
 /// let mut counter_elements: HashMap<i128, i128> = HashMap::new();
-///     for i in result.iter() {
+///     for i in result_user_input.iter() {
 ///         if counter_elements.contains_key(i) {
 ///             *counter_elements.get_mut(i).unwrap() += 1;
 ///         } else {
@@ -60,15 +60,16 @@ fn get_max_values(val_counts: HashMap<i128, i128>) -> Vec<i128> {
 ///         .min_by(|a, b| a.1.cmp(&b.1))
 ///         .map(|(k, _v)| k);
 /// ```
-pub fn print_res(num_array: Vec<i128>) -> i8 {
-    let result: Vec<i128>;
+
+pub fn count(num_array: Vec<i128>) -> HashMap<i128, i128> {
+    let result_user_input: Vec<i128>;
     if num_array.is_empty() {
-        result = small_logic::get_user_i128_input();
+        result_user_input = small_logic::get_user_i128_input();
     } else {
-        result = num_array;
+        result_user_input = num_array;
     }
     let mut counter_elements: HashMap<i128, i128> = HashMap::new();
-    for i in result.iter() {
+    for i in result_user_input.iter() {
         if counter_elements.contains_key(i) {
             *counter_elements.get_mut(i).unwrap() += 1;
         } else {
@@ -79,7 +80,11 @@ pub fn print_res(num_array: Vec<i128>) -> i8 {
         .iter()
         .min_by(|a, b| a.1.cmp(&b.1))
         .map(|(k, _v)| k);
-    println!("Ваш ответ - {:?}", get_max_values(counter_elements));
+    counter_elements
+}
 
+pub fn print_res(num_array: Vec<i128>) -> i8 {
+    let counter_elements = count(num_array);
+    println!("Ваш ответ - {:?}", get_max_values(counter_elements));
     return math_mods::exit_code_algos();
 }

@@ -10,18 +10,18 @@ use crate::{math_mods, small_logic};
 /// на длину вектора
 ///```
 /// let sum_all_numbers_in_input = result.iter().sum::<i128>();
-/// let answer: f64 = sum_all_numbers_in_input as f64 / result.len() as f64;
+/// let answer: f64 = sum_all_numbers_in_input as f64 / result_user_input.len() as f64;
 /// ```
 
-fn count(num_array: Vec<i128>) -> f64 {
-    let result: Vec<i128>;
+pub fn count(num_array: Vec<i128>) -> f64 {
+    let result_user_input: Vec<i128>;
     if num_array.is_empty() {
-        result = small_logic::get_user_i128_input();
+        result_user_input = small_logic::get_user_i128_input();
     } else {
-        result = num_array;
+        result_user_input = num_array;
     }
-    let sum_all_numbers_in_input = result.iter().sum::<i128>();
-    let answer: f64 = sum_all_numbers_in_input as f64 / result.len() as f64;
+    let sum_all_numbers_in_input = result_user_input.iter().sum::<i128>();
+    let answer: f64 = sum_all_numbers_in_input as f64 / result_user_input.len() as f64;
     return answer;
 }
 
