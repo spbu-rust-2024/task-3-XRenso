@@ -47,7 +47,7 @@ use std::io;
 /// );
 /// ```
 
-pub fn count(num_array: Vec<i128>, depth: Option<f64>) -> i8 {
+pub fn print_res(num_array: Vec<i128>, depth: Option<f64>) -> i8 {
     let mut user_input = String::new();
     let deep: i128;
     let result: Vec<i128>;

@@ -25,7 +25,7 @@ use crate::{math_mods, small_logic};
 /// let mut answer: f64 = x_i.iter().sum::<f64>();
 /// answer /= x_i.len() as f64;
 /// ```
-pub fn count(num_array: Vec<i128>) -> i8 {
+pub fn print_res(num_array: Vec<i128>) -> i8 {
     let result: Vec<i128>;
     if num_array.is_empty() {
         result = small_logic::get_user_i128_input();

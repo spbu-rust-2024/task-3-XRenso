@@ -37,7 +37,7 @@ use std::io;
 /// y_vec.push(y0);
 /// ```
 
-pub fn count(num_array: Vec<i128>, depth: Option<f64>) -> i8 {
+pub fn print_res(num_array: Vec<i128>, depth: Option<f64>) -> i8 {
     let deep: i128;
     let result: Vec<i128>;
     if depth == None {

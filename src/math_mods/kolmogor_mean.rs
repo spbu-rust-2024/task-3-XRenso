@@ -92,7 +92,7 @@ fn f_reverse(target_value: f64, x0_init: f64, tolerance: f64, max_iter: u16) -> 
 /// let ans = f_reverse(x, 0.0, 1e-6, 9999);
 /// ```
 
-pub fn count(num_array: Vec<i128>) -> i8 {
+pub fn print_res(num_array: Vec<i128>) -> i8 {
     let result: Vec<i128>;
     if num_array.is_empty() {
         result = small_logic::get_user_i128_input();

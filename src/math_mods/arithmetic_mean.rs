@@ -13,7 +13,7 @@ use crate::{math_mods, small_logic};
 /// let answer: f64 = sum_all_numbers_in_input as f64 / result.len() as f64;
 /// ```
 
-pub fn count(num_array: Vec<i128>) -> i8 {
+fn count(num_array: Vec<i128>) -> f64 {
     let result: Vec<i128>;
     if num_array.is_empty() {
         result = small_logic::get_user_i128_input();
@@ -22,6 +22,11 @@ pub fn count(num_array: Vec<i128>) -> i8 {
     }
     let sum_all_numbers_in_input = result.iter().sum::<i128>();
     let answer: f64 = sum_all_numbers_in_input as f64 / result.len() as f64;
+    return answer;
+}
+
+pub fn print_res(num_array: Vec<i128>) -> i8 {
+    let answer = count(num_array);
     println!("Ваш результат: {}", answer);
     return math_mods::exit_code_algos();
 }

@@ -23,7 +23,7 @@ use std::io;
 /// let answer: f64 = trim_result.iter().sum::<f64>() / trim_result.len() as f64;
 /// ```
 
-pub fn count(num_array: Vec<i128>, depth: Option<f64>) -> i8 {
+pub fn print_res(num_array: Vec<i128>, depth: Option<f64>) -> i8 {
     let trim_percent: f64;
     let mut result: Vec<i128>;
     if depth == None {
