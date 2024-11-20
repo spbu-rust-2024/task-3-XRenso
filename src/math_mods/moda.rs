@@ -97,7 +97,7 @@ mod tests {
 
     #[test]
     fn moda_equal_count_numbers() {
-        let input: Vec<i128> = vec![1, 2, 3, 4, 4];
+        let input: Vec<i128> = vec![1, 2, 3, 4];
         let expected_answer = vec![1, 2, 3, 4];
         let result = vector_elements_same_any_order(expected_answer, get_max_values(count(input)));
         assert_eq!(result, true)
