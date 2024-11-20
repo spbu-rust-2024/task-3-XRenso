@@ -52,3 +52,19 @@ pub fn print_res(num_array: Vec<i128>) -> i8 {
     println!("Ваш результат: {}", answer);
     return math_mods::exit_code_algos();
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn linnear_coeff_count_1() {
+        let input: Vec<i128> = vec![1, 1, 2, 3, 4, 5];
+        assert_eq!(count(input), 2.220906154852325)
+    }
+
+    #[test]
+    fn count_dispersion_2() {
+        let input: Vec<i128> = vec![1, 1, 1, 1, 1, 1, 1];
+        assert_eq!(count(input), 1.0)
+    }
+}

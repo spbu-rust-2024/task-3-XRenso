@@ -47,3 +47,19 @@ pub fn print_res(num_array: Vec<i128>) -> i8 {
     println!("Ваш результат: {}", answer);
     return math_mods::exit_code_algos();
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn square_mean_dev_same_number() {
+        let input: Vec<i128> = vec![1, 1, 1, 1, 1, 1];
+        assert_eq!(count(input), 0.0)
+    }
+
+    #[test]
+    fn square_mean_dev_diff_numbers() {
+        let input: Vec<i128> = vec![1, 2, 3, 4, 5, 6, 7];
+        assert_eq!(count(input), 2.0)
+    }
+}

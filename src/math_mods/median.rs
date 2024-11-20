@@ -48,3 +48,25 @@ pub fn print_res(num_array: Vec<i128>) -> i8 {
     println!("Ваш результат: {}", answer);
     return math_mods::exit_code_algos();
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn median_same_number() {
+        let input: Vec<i128> = vec![1, 1, 1, 1, 1, 1];
+        assert_eq!(count(input), 1.0)
+    }
+
+    #[test]
+    fn median_even_count_numbers() {
+        let input: Vec<i128> = vec![1, 2, 3, 4, 5, 6];
+        assert_eq!(count(input), 3.5)
+    }
+
+    #[test]
+    fn median_odd_count_numbers() {
+        let input: Vec<i128> = vec![1, 2, 3, 4, 5, 6, 7];
+        assert_eq!(count(input), 4.0)
+    }
+}

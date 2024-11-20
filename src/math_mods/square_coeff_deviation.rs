@@ -48,3 +48,19 @@ pub fn print_res(num_array: Vec<i128>) -> i8 {
     println!("Ваш результат: {}", answer);
     return math_mods::exit_code_algos();
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn square_coeff_deviaion_same_numbers() {
+        let input: Vec<i128> = vec![1, 1, 1, 1, 1, 1];
+        assert_eq!(count(input), 0.0)
+    }
+
+    #[test]
+    fn square_coeff_deviaion_1() {
+        let input: Vec<i128> = vec![2, 5];
+        assert_eq!(count(input), 0.42857142857142855)
+    }
+}

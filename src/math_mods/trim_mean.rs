@@ -69,3 +69,25 @@ pub fn print_res(num_array: Vec<i128>, depth: Option<f64>) -> i8 {
     println!("Ваш результат: {}", answer);
     return math_mods::exit_code_algos();
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    #[should_panic]
+    fn trim_mean_error_wrong_depth() {
+        let input: Vec<i128> = vec![1, 1, 1, 1, 1, 1];
+        count(input, Some(2.0));
+    }
+    #[test]
+    fn trim_mean_1() {
+        let input: Vec<i128> = vec![1, 1, 1, 1, 1];
+        assert_eq!(count(input, Some(0.2)), 1.0)
+    }
+
+    #[test]
+    fn trim_mean_2() {
+        let input: Vec<i128> = vec![1, 2, 3, 4, 5, 6, 7];
+        assert_eq!(count(input, Some(0.3)), 4.0)
+    }
+}

@@ -30,3 +30,18 @@ pub fn print_res(num_array: Vec<i128>) -> i8 {
     println!("Ваш результат: {}", answer);
     return math_mods::exit_code_algos();
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn count_arth_mean_from_one_element() {
+        let input: Vec<i128> = vec![1];
+        assert_eq!(count(input), 1.0);
+    }
+    #[test]
+    fn count_arth_mean_with_many_args() {
+        let input: Vec<i128> = vec![10, 10, 5, 6, 7, 8, 19, 20];
+        assert_eq!(count(input), 10.625);
+    }
+}

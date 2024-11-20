@@ -103,3 +103,16 @@ pub fn print_res(num_array: Vec<i128>, depth: Option<f64>) -> i8 {
     );
     return math_mods::exit_code_algos();
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn count_arth_geo_mean_for_depth_1() {
+        let input: Vec<i128> = vec![2, 3];
+        let depth: Option<f64> = Some(1.0);
+
+        let expected_result: Vec<Vec<f64>> = vec![vec![2.0, 2.5], vec![3.0, 2.449489742783178]];
+        assert_eq!(count(input, depth), expected_result);
+    }
+}

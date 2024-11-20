@@ -59,3 +59,23 @@ pub fn print_res(num_array: Vec<i128>, depth: Option<f64>) -> i8 {
     println!("Ваш результат: {}", answer);
     return math_mods::exit_code_algos();
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn count_degree_mean_1() {
+        let input: Vec<i128> = vec![4, 2];
+        let root: Option<f64> = Some(2.0);
+
+        assert_eq!(count(input, root), 3.1622776601683795)
+    }
+
+    #[test]
+    fn count_degree_root_is_one() {
+        let input: Vec<i128> = vec![4, 2];
+        let root: Option<f64> = Some(1.0);
+
+        assert_eq!(count(input, root), 3.0)
+    }
+}

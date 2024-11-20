@@ -104,10 +104,36 @@ pub fn count(num_array: Vec<i128>) -> f64 {
     }
     x /= result_user_input.len() as f64;
     let ans = f_reverse(x, 0.0, 1e-6, 9999);
+    if ans.is_nan() {
+        panic!("Too big number");
+    }
     ans
 }
 pub fn print_res(num_array: Vec<i128>) -> i8 {
     let answer = count(num_array);
     println!("Ваш ответ: {}", answer);
     return math_mods::exit_code_algos();
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn kolmogor_mean_small_number() {
+        let input: Vec<i128> = vec![1, 2];
+        assert_eq!(count(input), 1.5903033025079434)
+    }
+
+    #[test]
+    #[should_panic]
+    fn kolmogor_mean_big_number() {
+        let input: Vec<i128> = vec![999999, 999999, 99999];
+        count(input);
+    }
+
+    #[test]
+    fn kolmogor_mean_only_one_arg() {
+        let input: Vec<i128> = vec![5];
+        assert_eq!(count(input), 5.0)
+    }
 }
