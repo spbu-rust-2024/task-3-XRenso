@@ -12,8 +12,8 @@ use std::io;
 /// # Принцип работы
 /// Мы создаем 2 вектора, которые будут отвечать за последовательности a и b
 /// ```
-/// let mut a = result[0] as f64;
-/// let mut b = result[1] as f64;
+/// let mut a = result_user_input[0] as f64;
+/// let mut b = result_user_input[1] as f64;
 ///```
 /// P.S `result` это пользовательский ввод.
 ///
@@ -47,10 +47,10 @@ use std::io;
 /// );
 /// ```
 
-pub fn count(num_array: Vec<i128>, depth: Option<f64>) -> i8 {
+pub fn count(num_array: Vec<i128>, depth: Option<f64>) -> Vec<Vec<f64>> {
     let mut user_input = String::new();
     let deep: i128;
-    let result: Vec<i128>;
+    let result_user_input: Vec<i128>;
     if depth == None {
         println!("Введите глубину расчета: ");
         io::stdin()
@@ -67,16 +67,16 @@ pub fn count(num_array: Vec<i128>, depth: Option<f64>) -> i8 {
         panic!("Невалидные входные данные: Глубина расчетов меньше 1");
     }
     if num_array.is_empty() {
-        result = small_logic::get_user_i128_input();
+        result_user_input = small_logic::get_user_i128_input();
     } else {
-        result = num_array;
+        result_user_input = num_array;
     }
-    if result.len() != 2 {
+    if result_user_input.len() != 2 {
         panic!("Невалидные входные данные: должно быть 2 числа");
     }
 
-    let mut a = result[0] as f64;
-    let mut b = result[1] as f64;
+    let mut a = result_user_input[0] as f64;
+    let mut b = result_user_input[1] as f64;
     let mut a0 = a;
     let mut b0 = b;
 
@@ -93,10 +93,26 @@ pub fn count(num_array: Vec<i128>, depth: Option<f64>) -> i8 {
     }
     a_vec.push(a0);
     b_vec.push(b0);
-
+    vec![a_vec, b_vec]
+}
+pub fn print_res(num_array: Vec<i128>, depth: Option<f64>) -> i8 {
+    let answer = count(num_array, depth);
     println!(
         "Ваш ответ\n\nАрефметическое: {:?}\nГеометрическое: {:?}",
-        a_vec, b_vec
+        answer[0], answer[1]
     );
     return math_mods::exit_code_algos();
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn count_arth_geo_mean_for_depth_1() {
+        let input: Vec<i128> = vec![2, 3];
+        let depth: Option<f64> = Some(1.0);
+
+        let expected_result: Vec<Vec<f64>> = vec![vec![2.0, 2.5], vec![3.0, 2.449489742783178]];
+        assert_eq!(count(input, depth), expected_result);
+    }
 }

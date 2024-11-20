@@ -85,26 +85,55 @@ fn f_reverse(target_value: f64, x0_init: f64, tolerance: f64, max_iter: u16) -> 
 /// количество чисел и находим обратное значение в функии `f_reverse(x)`
 /// ```
 /// let mut x: f64 = 0.0;
-/// for i in result.iter() {
+/// for i in result_user_input.iter() {
 ///     x += f(*i as f64);
 /// }
-/// x /= result.len() as f64;
+/// x /= result_user_input.len() as f64;
 /// let ans = f_reverse(x, 0.0, 1e-6, 9999);
 /// ```
-
-pub fn count(num_array: Vec<i128>) -> i8 {
-    let result: Vec<i128>;
+pub fn count(num_array: Vec<i128>) -> f64 {
+    let result_user_input: Vec<i128>;
     if num_array.is_empty() {
-        result = small_logic::get_user_i128_input();
+        result_user_input = small_logic::get_user_i128_input();
     } else {
-        result = num_array;
+        result_user_input = num_array;
     }
     let mut x: f64 = 0.0;
-    for i in result.iter() {
+    for i in result_user_input.iter() {
         x += f(*i as f64);
     }
-    x /= result.len() as f64;
+    x /= result_user_input.len() as f64;
     let ans = f_reverse(x, 0.0, 1e-6, 9999);
-    println!("Ваш ответ: {}", ans);
+    if ans.is_nan() {
+        panic!("Too big number");
+    }
+    ans
+}
+pub fn print_res(num_array: Vec<i128>) -> i8 {
+    let answer = count(num_array);
+    println!("Ваш ответ: {}", answer);
     return math_mods::exit_code_algos();
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn kolmogor_mean_small_number() {
+        let input: Vec<i128> = vec![1, 2];
+        assert_eq!(count(input), 1.5903033025079434)
+    }
+
+    #[test]
+    #[should_panic]
+    fn kolmogor_mean_big_number() {
+        let input: Vec<i128> = vec![999999, 999999, 99999];
+        count(input);
+    }
+
+    #[test]
+    fn kolmogor_mean_only_one_arg() {
+        let input: Vec<i128> = vec![5];
+        assert_eq!(count(input), 5.0)
+    }
 }
