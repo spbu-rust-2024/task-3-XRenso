@@ -59,12 +59,12 @@ mod tests {
     #[test]
     fn linnear_coeff_count_1() {
         let input: Vec<i128> = vec![1, 1, 2, 3, 4, 5];
-        assert_eq!(count(input), 2.220906154852325)
+        assert_eq!(count(input), 0.5)
     }
 
     #[test]
     fn count_dispersion_2() {
         let input: Vec<i128> = vec![1, 1, 1, 1, 1, 1, 1];
-        assert_eq!(count(input), 1.0)
+        assert_eq!(count(input), 0.0)
     }
 }
